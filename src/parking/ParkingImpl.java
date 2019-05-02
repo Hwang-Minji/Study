@@ -1,9 +1,6 @@
 package parking;
 
-import car.Car;
-import car.Jeep;
-import car.Sedan;
-import car.Truck;
+import car.*;
 import clark.BangClarkImpl;
 import clark.BbangClarkImpl;
 
@@ -17,15 +14,15 @@ public class ParkingImpl implements Parking {
     @Override
     public void addCar(Car car) {
         switch(car.getType()) {
-            case "Sedan" :
+            case "Sedan":
                 sedans.add(car);
                 break;
 
-            case "Truck" :
+            case "Truck":
                 trucks.add(car);
                 break;
 
-            case "Jeep" :
+            case "Jeep":
                 jeeps.add(car);
                 break;
 
@@ -109,7 +106,14 @@ public class ParkingImpl implements Parking {
 
     @Override
     public void start() {
-        Car minsCar = new Sedan(1, 2, "0126", 1000, "Minji", 13 );
+        Car minsCar = new CarBuilder().
+                setCarNum("0126").
+                setWidth(1).
+                setHeight(1).
+                setOwner("MInji").
+                setPrice(1000).
+                setTime(1300).
+                buildSedan();
 
         minsCar.setClark(new BangClarkImpl());
         minsCar.getClark();

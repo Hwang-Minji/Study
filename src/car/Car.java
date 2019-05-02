@@ -13,14 +13,14 @@ abstract public class Car {
 
    Clark clark;
 
-    public Car(String type, int width, int height, String carNum, int price, String owner, int time) {
+    public Car(String type, CarBuilder carBuilder) {
         this.type = type;
-        this.width = width;
-        this.height = height;
-        this.carNum = carNum;
-        this.price = price;
-        this.owner = owner;
-        this.time = time;
+        this.width = carBuilder.getWidth();
+        this.height = carBuilder.getHeight();
+        this.carNum = carBuilder.getCarNum();
+        this.price = carBuilder.getPrice();
+        this.owner = carBuilder.getOwner();
+        this.time = carBuilder.getTime();
     }
 
     public void getClark() {
