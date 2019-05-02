@@ -37,4 +37,8 @@ abstract public class Car {
     public String getCarNum() {
         return this.carNum;
     }
+
+    public String getOwner() {
+        return this.owner;
+    }
 }

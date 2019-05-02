@@ -7,77 +7,28 @@ import clark.BbangClarkImpl;
 import java.util.ArrayList;
 
 public class ParkingImpl implements Parking {
-    private ArrayList<Car> sedans = new ArrayList<>();
-    private ArrayList<Car> trucks = new ArrayList<>();
-    private ArrayList<Car> jeeps = new ArrayList<>();
+    private ArrayList<Car> cars = new ArrayList<>();
 
     @Override
     public void addCar(Car car) {
-        switch(car.getType()) {
-            case "Sedan":
-                sedans.add(car);
-                break;
-
-            case "Truck":
-                trucks.add(car);
-                break;
-
-            case "Jeep":
-                jeeps.add(car);
-                break;
-
-            default :
-                System.out.println("Invalid car.");
-                break;
-        }
+        cars.add(car);
     }
 
     @Override
     public void deleteCar(String type, String carNum) {
-        switch(type) {
-            case "Sedan":
-                for(int i=0; i<sedans.size(); i++) {
-                    if(sedans.get(i).getCarNum() == carNum)
-                        sedans.remove(sedans.get(i));
-                }
-                break;
-
-            case "Truck":
-                for(int i=0; i<trucks.size(); i++) {
-                    if(trucks.get(i).getCarNum() == carNum)
-                        trucks.remove(trucks.get(i));
-                }
-                break;
-
-            case "Jeep":
-                for(int i=0; i<jeeps.size(); i++) {
-                    if(jeeps.get(i).getCarNum() == carNum)
-                        jeeps.remove(jeeps.get(i));
-                }
-                break;
-
+        for(int i=0; i<cars.size(); i++) {
+            if(cars.get(i).getCarNum() == carNum && cars.get(i).getType() == type)
+                cars.remove(cars.get(i));
         }
     }
 
     private void printShowParkedCar(String type) {
-        switch(type) {
-            case "Sedan":
-                for(int i=0; i<sedans.size(); i++) {
-                    System.out.println (type + " " + (i+1) + " : car no " + sedans.get(i).getCarNum());
-                }
-                break;
-
-            case "Truck":
-                for(int i=0; i<sedans.size(); i++) {
-                    System.out.println (type + " " + (i+1) + " : car no " + trucks.get(i).getCarNum());
-                }
-                break;
-
-            case "Jeep":
-                for(int i=0; i<sedans.size(); i++) {
-                    System.out.println (type + " " + (i+1) + " : car no " + jeeps.get(i).getCarNum());
-                }
-                break;
+        int cnt = 1;
+        for(int i=0; i<cars.size(); i++) {
+            if(cars.get(i).getType() == type) {
+                System.out.println (type + " " + cnt + " : car no " + cars.get(i).getCarNum());
+                cnt++;
+            }
         }
     }
 
@@ -123,11 +74,11 @@ public class ParkingImpl implements Parking {
 
         addCar(minsCar);
         System.out.println(minsCar.getType());
-        System.out.println(sedans.size());
+        System.out.println(cars.size());
         showParkedCar(1);
 
         deleteCar("Sedan", "0126");
-        System.out.println(sedans.size());
+        System.out.println(cars.size());
 
     }
 }
